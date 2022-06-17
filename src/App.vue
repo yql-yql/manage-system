@@ -21,6 +21,6 @@ export default {
     padding: 0;
   }
   #app {
-    height: 100px;
+    height: 1000px;
   }
 </style>
