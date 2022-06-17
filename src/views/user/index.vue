@@ -133,14 +133,7 @@ export default {
     }
   },
   methods:{
-    getAge(date){
-      //出生时间 毫秒
-      let birthDayTime = new Date(birthday).getTime(); 
-      //当前时间 毫秒
-      let nowTime = new Date().getTime(); 
-      //一年毫秒数(365 * 86400000 = 31536000000)
-      return Math.ceil((nowTime-birthDayTime)/31536000000);
-    },
+    
     confirm(){
       if(this.operateType === 'edit'){
         this.$http.post('/user/edit', this.operateForm).then(res => {
