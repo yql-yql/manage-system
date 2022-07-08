@@ -1,3 +1,7 @@
+/*
+ * @Date: 2022-06-17 16:17:22
+ * @LastEditTime: 2022-06-22 20:34:17
+ */
 import axios from 'axios'
 import config from '../config'
 
@@ -13,6 +17,7 @@ class HttpRequest {
   getInsideConfig(){
     const config = {
       baseUrl:this.baseUrl,
+      
       //请求头的信息
       header:{}
     }
@@ -33,11 +38,13 @@ class HttpRequest {
     instance.interceptors.response.use(
       response => {
         //对响应数据做些什么
+        console.log('响应的数据：')
         console.log(response);
         return response;
       },
       error => {
         //对响应错误做些什么
+        console.log('响应错误！')
         console.log(error)
         return Promise.reject(error);
       }

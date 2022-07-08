@@ -38,15 +38,17 @@ function getAge(birthday)
   return Math.ceil((nowTime-birthDayTime)/31536000000);
 }
 let List = [];
-const count = 200;
+const count = 10000;
 for(let i = 0;i<count;i++){
   List.push(
     Mock.mock({
       id:Mock.Random.guid(),
-      name:Mock.Random.cname(),
-      addr:Mock.mock('@county(true)'),
-      // 'age|18-60':1,
-      birth:Mock.Random.date(),
+      index:Mock.mock('@increment(1)'), 
+      name:Mock.Random.cword(2,8),
+      avatar: Mock.Random.image(),
+      addr:Mock.mock('@city'),
+      'age|18-60':1,
+      registDate:Mock.Random.datetime(),
       // age:getAge(),
       sex:Mock.Random.integer(0, 1)
     })
@@ -70,10 +72,11 @@ export default {
     })
     const pageList = mockList.filter((item, index) => index < limit * page && index >= limit * (page - 1))
     // console.log(pageList)
-    pageList.map(item => {
-      // item.add('age',getAge(item.birth))
-      item.age = getAge(item.birth);
-    })
+    // pageList.map(item => {
+    //   // item.add('age',getAge(item.birth))
+    //   item.age = getAge(item.birth);
+    // })
+    console.log(pageList);
     return {
       code:20000,
       count:mockList.length,
